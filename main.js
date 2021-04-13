@@ -18,8 +18,10 @@ function binaryToDecimal(){
 }
 
 function copyToCB(){
-  let r = document.createRange();
-  r.selectNode(outputText);
-  window.getSelection().addRange(r);
+  let dummyTextArea = document.createElement("textarea");
+  document.body.append(dummyTextArea);
+  dummyTextArea.value = outputText.innerHTML;
+  dummyTextArea.select();
   document.execCommand('copy');
+  document.body.removeChild(dummyTextArea);
 }
